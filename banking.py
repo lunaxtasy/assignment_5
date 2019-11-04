@@ -7,6 +7,7 @@ and optional timestamps
 
 from dataclasses import dataclass
 from decimal import getcontext, Decimal
+import datetime
 
 #set decimal point precision to 2 places
 getcontext().prec = 3
@@ -18,9 +19,11 @@ class Transaction:
     """
 
     amount: int or float or Decimal
+    timestamp: datetime
 
-    def __init__(self, amount):
+    def __init__(self, amount, timestamp = None):
         self.amount = amount
+        self.timestamp = timestamp
 
     def get_account(self):
         """
@@ -28,3 +31,11 @@ class Transaction:
         money
         """
         return self.amount
+
+    def get_timestamp(self):
+        """
+        This function gets the timestamp for a transaction
+        """
+        if self.timestamp is None:
+            self.timestamp = datetime.now()
+        return self.timestamp

@@ -5,6 +5,7 @@ This file contains all the test scenerios checked for Assignment 5
 """
 
 #import pytest - not needed due to using virtual environment on PC
+import datetime
 from banking import Transaction
 
 def test_account_setup():
@@ -31,3 +32,11 @@ def test_account_setup_decimal():
 
     becky_account = Transaction(100.0)
     assert becky_account.get_account() == 100.0
+
+def test_timestamp():
+    """
+    This test checks that the timestamp is bound to self
+    """
+
+    becky_account = Transaction(100, datetime.datetime(2018, 1, 1, 1, 1, 1))
+    assert becky_account.get_timestamp() == datetime.datetime(2018, 1, 1, 1, 1, 1)
