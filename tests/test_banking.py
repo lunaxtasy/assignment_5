@@ -5,9 +5,7 @@ This file contains all the test scenerios checked for Assignment 5
 """
 
 #import pytest - not needed due to using virtual environment on PC
-from datetime import datetime, date
-import unittest
-from mock import patch, Mock
+from datetime import datetime
 from banking import Transaction
 
 def test_account_setup():
@@ -40,8 +38,8 @@ def test_timestamp():
     This test checks that the timestamp is bound to self
     """
 
-    becky_account = Transaction(100, date(2018, 1, 1))
-    assert becky_account.get_timestamp() == date(2018, 1, 1)
+    becky_account = Transaction(100, datetime(2018, 1, 1))
+    assert becky_account.get_timestamp() == datetime(2018, 1, 1)
 
 def test_bank_entry():
     """

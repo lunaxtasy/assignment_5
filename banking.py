@@ -7,7 +7,7 @@ and optional timestamps
 
 from dataclasses import dataclass
 from decimal import getcontext, Decimal
-from datetime import date
+import datetime
 
 #set decimal point precision to 2 places
 getcontext().prec = 3
@@ -19,7 +19,7 @@ class Transaction:
     """
 
     amount: int or float or Decimal
-    timestamp: date
+    timestamp: datetime
 
     def __init__(self, amount, timestamp=None):
         self.amount = amount
