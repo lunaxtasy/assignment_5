@@ -8,6 +8,7 @@ and optional timestamps
 from dataclasses import dataclass
 from decimal import *
 
+#set decimal point precision to 2 places
 getcontext().prec = 2
 
 @dataclass
