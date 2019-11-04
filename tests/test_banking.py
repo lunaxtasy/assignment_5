@@ -5,8 +5,9 @@ This file contains all the test scenerios checked for Assignment 5
 """
 
 #import pytest - not needed due to using virtual environment on PC
-import datetime
-#from freezegun import freeze_time
+from datetime import datetime, date
+import unittest
+from mock import patch, Mock
 from banking import Transaction
 
 def test_account_setup():
@@ -39,14 +40,13 @@ def test_timestamp():
     This test checks that the timestamp is bound to self
     """
 
-    becky_account = Transaction(100, datetime.datetime(2018, 1, 1, 1, 1, 1))
-    assert becky_account.get_timestamp() == datetime.datetime(2018, 1, 1, 1, 1, 1)
+    becky_account = Transaction(100, date(2018, 1, 1))
+    assert becky_account.get_timestamp() == date(2018, 1, 1)
 
-#@freeze_time("2001-01-31")
-def test_no_timestamp():
+def test_bank_entry():
     """
-    This test verifies that the module will generate a timestamp as default when
-    one is not provided
+    This test returns a string with the transaction bank_entry
     """
-    becky_account = Transaction(100.01)
-    assert becky_account.get_timestamp() == datetime.datetime.now()
+
+    becky_account = Transaction(1234.56)
+    assert becky_account.bank_entry() == "+$1234.56"
