@@ -6,10 +6,10 @@ and optional timestamps
 """
 
 from dataclasses import dataclass
-from decimal import *
+from decimal import getcontext, Decimal
 
 #set decimal point precision to 2 places
-getcontext().prec = 2
+getcontext().prec = 3
 
 @dataclass
 class Transaction:
@@ -17,7 +17,7 @@ class Transaction:
     This class stores the bank account balance and any associated timestamps
     """
 
-    amount: int or float or Dec
+    amount: int or float or Decimal
 
     def __init__(self, amount):
         self.amount = amount
