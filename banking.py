@@ -6,6 +6,9 @@ and optional timestamps
 """
 
 from dataclasses import dataclass
+from decimal import *
+
+getcontext().prec = 2
 
 @dataclass
 class Transaction:
@@ -13,7 +16,7 @@ class Transaction:
     This class stores the bank account balance and any associated timestamps
     """
 
-    amount: int or float or decimal
+    amount: int or float or Dec
 
     def __init__(self, amount):
         self.amount = amount
