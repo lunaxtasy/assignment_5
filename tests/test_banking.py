@@ -38,13 +38,13 @@ def test_timestamp():
     This test checks that the timestamp is bound to self
     """
 
-    becky_account = Transaction(100, datetime(2018, 1, 1))
-    assert becky_account.get_timestamp() == datetime(2018, 1, 1)
+    becky_account = Transaction(100, datetime(2018, 1, 1, 0, 0, 0))
+    assert becky_account.get_timestamp() == datetime(2018, 1, 1, 0, 0, 0)
 
 def test_bank_entry():
     """
     This test returns a string with the transaction bank_entry
     """
 
-    becky_account = Transaction(1234.56)
-    assert becky_account.bank_entry() == "+$1234.56"
+    becky_account = Transaction(1234.56, datetime(2019, 1, 1))
+    assert becky_account.bank_entry() == "2019-01-01: +$1234.56"
