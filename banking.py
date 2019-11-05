@@ -7,7 +7,7 @@ and optional timestamps
 
 from dataclasses import dataclass
 from decimal import getcontext, Decimal
-from datetime import datetime
+from datetime import datetime, date
 
 #set decimal point precision to 2 places
 getcontext().prec = 3
