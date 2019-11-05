@@ -6,7 +6,7 @@ This file contains all the test scenerios checked for Assignment 5
 
 #import pytest - not needed due to using virtual environment on PC
 from datetime import datetime
-from banking import Transaction
+from banking import Transaction, Account
 
 def test_account_setup():
     """
@@ -48,3 +48,10 @@ def test_bank_entry():
 
     becky_account = Transaction(1234.56, datetime(2019, 1, 1))
     assert becky_account.bank_entry() == "2019-01-01: +$1234.56"
+
+def test_zero_balance():
+    """
+    This test checks that the balance is 0 when there are no transactions
+    """
+    becky_account = Account(0)
+    assert becky_account.get_balance() == 0

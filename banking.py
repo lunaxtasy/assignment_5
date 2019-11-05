@@ -60,3 +60,19 @@ class Transaction:
         Creates entry for transaction list
         """
         return f'{self.timestamps.strftime("%Y-%m-%d")}: +${self.amount}'
+
+class Account:
+    """
+    This class allows for deposits and withdrawals and calculates balance, as
+    well as showing a list of transactions
+    """
+
+    def __init__(self, account_balance=0):
+        self.account_balance = account_balance
+        self.transactions = {}
+
+    def get_balance(self):
+        """
+        Returns the current acccount get_balance
+        """
+        return self.account_balance
