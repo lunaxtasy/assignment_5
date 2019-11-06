@@ -46,12 +46,19 @@ def test_bank_entry():
     This test returns a string with the transaction bank_entry
     """
 
-    becky_account = Transaction(1234.56, datetime(2019, 1, 1))
-    assert becky_account.bank_entry() == "2019-01-01: +$1234.56"
+    becky_account = Transaction(1234.56, datetime(2019, 1, 1, 12, 0, 0))
+    assert becky_account.bank_entry() == "2019-01-01 12:00:00: +$1234.56"
 
 def test_zero_balance():
     """
     This test checks that the balance is 0 when there are no transactions
     """
-    becky_account = Account(0)
-    assert becky_account.get_balance() == 0
+    rebecca_account = Account()
+    assert rebecca_account.get_balance() == 0
+
+def test_i_am_rich():
+    """
+    This test makes a deposit
+    """
+    rebecca_account = Transaction(100.25, datetime(2019, 1, 1, 12, 0, 0))
+    assert rebecca_account.get_balance() == 100.25

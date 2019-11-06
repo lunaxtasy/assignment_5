@@ -5,7 +5,7 @@ Defines account and transaction functions and updates entries made with amounts
 and optional timestamps
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from decimal import getcontext, Decimal
 from datetime import datetime, date
 
@@ -59,20 +59,37 @@ class Transaction:
         """
         Creates entry for transaction list
         """
-        return f'{self.timestamps.strftime("%Y-%m-%d")}: +${self.amount}'
+        return f'{self.timestamps.strftime("%Y-%m-%d %H:%M:%S")}: +${self.amount}'
 
-class Account:
+@dataclass
+class Account(Transaction):
     """
     This class allows for deposits and withdrawals and calculates balance, as
     well as showing a list of transactions
     """
 
-    def __init__(self, account_balance=0):
-        self.account_balance = account_balance
-        self.transactions = {}
+    def __init__(self, balance=float(0.00)):
+        self.balance = balance
+        self.transactions = []
+
+    def deposit(self, amount: float):
+        """
+        Allows deposits to the account
+        """
+        self.transactions.append(Transaction(timestamps, amount))
+        self.balance += Transaction(amount)
 
     def get_balance(self):
         """
         Returns the current acccount get_balance
         """
-        return self.account_balance
+        return self.balance
+
+    """
+    def withdraw(self, amount: float)
+
+    Allows withdrawals from the account
+
+    self.transactions.append(Transaction(timestamps, amount))
+    self.account_balance -= Transaction(amount)
+    """
